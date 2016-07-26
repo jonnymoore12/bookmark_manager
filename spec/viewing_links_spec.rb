@@ -1,8 +1,8 @@
 feature 'Viewing links' do
   scenario 'Links page displays a list of existing links' do
 
-    visit '/links'
     List.create(url: "http://www.makersacademy.com", title: "Makers Academy")
+    visit '/links'
 
     # sanity check (remove later):
     expect(page.status_code).to eq 200
