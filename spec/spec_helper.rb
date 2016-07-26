@@ -2,6 +2,8 @@
 
 ENV['RACK_ENV'] = 'test'
 
+# THIS STEP WAS DONE AUTOMATICALLY (ASIDE FROM THE PATH) BY RSPEC-SINATRA INIT
+# IT'S EQUIVALENT TO require '../app/app.rb'
 require File.join(File.dirname(__FILE__), '..', 'app', 'app.rb')
 
 require 'capybara'
@@ -36,7 +38,7 @@ RSpec.configure do |config|
     DatabaseCleaner.strategy = :truncation
     DatabaseCleaner.clean
   end
-  
+
   config.include Capybara::DSL
   # rspec-expectations config goes here. You can use an alternate
   # assertion/expectation library such as wrong or the stdlib/minitest

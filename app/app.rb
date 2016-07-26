@@ -1,3 +1,4 @@
+# Configures app to run in development mode by default
 ENV["RACK_ENV"] ||= "development"
 
 require 'sinatra/base'
