@@ -1,6 +1,10 @@
 GEM
   remote: https://rubygems.org/
   specs:
+    Rspec (3.5.0)
+      rspec-core (~> 3.5.0)
+      rspec-expectations (~> 3.5.0)
+      rspec-mocks (~> 3.5.0)
     addressable (2.4.0)
     bcrypt (3.1.11)
     bcrypt-ruby (3.1.5)
@@ -79,10 +83,6 @@ GEM
     rack (2.0.1)
     rack-test (0.6.3)
       rack (>= 1.0)
-    rspec (3.5.0)
-      rspec-core (~> 3.5.0)
-      rspec-expectations (~> 3.5.0)
-      rspec-mocks (~> 3.5.0)
     rspec-core (3.5.1)
       rspec-support (~> 3.5.0)
     rspec-expectations (3.5.0)
@@ -109,11 +109,11 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  Rspec
   capybara
   data_mapper
   database_cleaner
   dm-postgres-adapter
-  rspec
   rspec-sinatra
   sinatra
 
