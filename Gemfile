@@ -9,7 +9,6 @@ gem 'sinatra'
 group :test, :development do
   gem 'capybara'
   gem 'rspec'
-  gem 'rerun'
   gem 'rspec-sinatra'
   gem 'database_cleaner'
 end
