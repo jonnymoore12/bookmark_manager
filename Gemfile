@@ -8,6 +8,7 @@ gem 'sinatra'
 gem 'rake'
 gem 'bcrypt'
 
+
 group :test, :development do
   gem 'capybara'
   gem 'rspec'
@@ -15,4 +16,5 @@ group :test, :development do
   gem 'rspec-sinatra'
   gem 'database_cleaner'
   gem 'rake'
+  gem 'sinatra-flash'
 end

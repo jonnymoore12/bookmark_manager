@@ -11,5 +11,7 @@ feature "Signing up" do
 
   scenario "no new users created for mismatching passwords" do
     expect { sign_up(password_confirmation: 'wrong_pasword') }.not_to change(User, :count)
+    expect(current_path).to eq('/users')
+    expect(page).to have_content("Password and confirmation password do not match")
   end
 end
