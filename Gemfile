@@ -6,6 +6,7 @@ gem 'data_mapper'
 gem 'dm-postgres-adapter'
 gem 'sinatra'
 gem 'rake'
+gem 'bcrypt'
 
 group :test, :development do
   gem 'capybara'
