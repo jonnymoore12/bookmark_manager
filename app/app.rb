@@ -11,6 +11,21 @@ class BookmarkManager < Sinatra::Base
   enable :sessions
   set :session_secret, 'super_secret'
 
+  get 'sessions/new' do
+    erb :'sessions/new'
+  end
+
+  post '/sessions' do
+    user = User.authenticate(params[:email], params[:password])
+    if user    # Returns true/false depending on whether User saved to DB.
+      session[:user_id] = user.id
+      redirect to('/links')
+    else
+      flash.now[:errors] = ['The email or password is incorrect']
+      erb :'sessions/new'
+    end
+  end
+
   get '/' do
     redirect('/links')
   end
@@ -50,7 +65,6 @@ class BookmarkManager < Sinatra::Base
       session[:user_id] = @user.id
       redirect to('/links')
     else
-      # 1. Empty, 2. Already, 3. Invalid
       flash.now[:errors] = @user.errors.full_messages
       erb :'users/new'
     end
