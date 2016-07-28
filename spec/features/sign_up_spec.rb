@@ -9,19 +9,28 @@ feature "Signing up" do
     expect(user.email).to eq("example@email.com")
   end
 
-  scenario "no new users created for mismatching passwords" do
+  scenario "No new users created for mismatching passwords" do
     expect { sign_up(password_confirmation: 'wrong_pasword') }.not_to change(User, :count)
     expect(current_path).to eq('/users')
-    expect(page).to have_content("Password and confirmation password do not match")
+    expect(page).to have_content("Password does not match the confirmation")
   end
 
-  scenario "user cannot sign up with blank email" do
+  scenario "Cannot sign up without an email address" do
     expect { sign_up(email: nil) }.not_to change(User, :count)
-    # Do we need this? :
-    #expect(page).to have_content("No email entered!")
+    expect(current_path).to eq('/users')
+    expect(page).to have_content("Email must not be blank")
   end
 
-  scenario "user cannot sign up with invalid email" do
+  scenario "Cannot sign up with invalid email address" do
     expect {sign_up(email: "invalid@email") }.not_to change(User, :count)
+    expect(current_path).to eq('/users')
+    expect(page).to have_content("Email has an invalid format")
+  end
+
+  scenario "Cannot sign up with an already registered email address" do
+    sign_up
+    expect { sign_up }.not_to change(User, :count)
+    expect(current_path).to eq('/users')
+    expect(page).to have_content("Email is already taken")
   end
 end
