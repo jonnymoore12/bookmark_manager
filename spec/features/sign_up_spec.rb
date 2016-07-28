@@ -14,4 +14,14 @@ feature "Signing up" do
     expect(current_path).to eq('/users')
     expect(page).to have_content("Password and confirmation password do not match")
   end
+
+  scenario "user cannot sign up with blank email" do
+    expect { sign_up(email: nil) }.not_to change(User, :count)
+    # Do we need this? :
+    #expect(page).to have_content("No email entered!")
+  end
+
+  scenario "user cannot sign up with invalid email" do
+    expect {sign_up(email: "invalid@email") }.not_to change(User, :count)
+  end
 end
