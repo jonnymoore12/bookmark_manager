@@ -5,6 +5,7 @@ class User
   include DataMapper::Resource
 
   attr_writer :password_repeat
+  attr_reader :password
 
   property :id,      Serial
   property :email,   String,  :required => true, :unique => true
